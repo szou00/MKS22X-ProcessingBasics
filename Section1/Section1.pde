@@ -43,11 +43,11 @@ class Visualizer {
     for (int i = 0; i<values.length; i++) {
       if (values[i] < 0) {
         fill(0,255,0);
-        rect(x+40*i, y+values[i]+100, 40, 100-values[i]);
+        rect(x+40*i, y+100, 40, values[i]);
       }
       else {
         fill(255, 0, 0);
-        rect(x+40*i, y+values[i]+100, 40, 100+values[i]);
+        rect(x+40*i, y+(100-values[i]*-1), 40, values[i]*-1);
       }
     }
 
@@ -61,6 +61,9 @@ class Visualizer {
     for (int i = 0; i < values.length; i++) {
       values[i] += speeds[i]; //the speed updates the values. Do not touch this.
       //??? keep them values between max/min value so they stay in the box.
+      if (values[i] > 99 || values[i] < -99) {
+        speeds[i+1] *= -1;
+      }
       display();
 
       //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
@@ -75,6 +78,7 @@ void setup() {
   v = new Visualizer(20, 20);
   background(255);
   v.display();
+  v.update();
 }
 //void draw() {
   //background(255);
