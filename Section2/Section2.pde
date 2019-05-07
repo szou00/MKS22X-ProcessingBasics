@@ -28,7 +28,7 @@ void gasketHelper(int level, int levels, float v1x, float v1y, float v2x, float 
     triangle((v1x+v2x)/2, (v1y+v2y)/2, (v2x+v3x)/2,(v2y+v3y)/2,(v3x+v1x)/2,(v3y+v1y)/2);
     gasketHelper(level + 1, levels, v1x, v1y, (v1x+v2x) / 2, (v1y+v2y)/2, (v1x+v3x)/2, (v1y+v3y)/2);
     gasketHelper(level + 1, levels, v2x, v2y, (v1x+v2x) / 2, (v1y+v2y)/2, (v2x+v3x)/2, (v2y+v3y)/2);
-    gasketHelper(level + 1, levels, v3x, v3y, (v1x+v3x) / 2, (v1y+v3y)/2, (v1x+v3x)/2, (v1y+v3y)/2);
+    gasketHelper(level + 1, levels, v3x, v3y, (v1x+v3x) / 2, (v1y+v3y)/2, (v2x+v3x)/2, (v2y+v3y)/2);
   } 
 }
 
