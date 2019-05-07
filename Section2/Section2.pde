@@ -22,6 +22,7 @@ void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, f
 void gasketHelper(int level, int levels, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
   if (level == 0) { //first create a triangle
     fill(0,0,255);
+    background(0,0,0);
   }
   if (level < levels) {
     fill(0,0,0); //and then take the one in the middle out 
