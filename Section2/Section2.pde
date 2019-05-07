@@ -16,6 +16,20 @@ void setup() {
 */
 void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
     //YOU WRITE THIS METHOD!
+    gasketHelper(0, levels, v1x, v1y, v2x, v2y, v3x, v3y);
+}
+
+void gasketHelper(int level, int levels, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
+  if (level == 0) { //first create a triangle
+    fill(0,0,255);
+  }
+  if (level < levels) {
+    fill(0,0,0); //and then take the one in the middle out 
+    triangle((v1x+v2x)/2, (v1y+v2y)/2, (v2x+v3x)/2,(v2y+v3y)/2,(v3x+v1x)/2,(v3y+v1y)/2);
+    gasketHelper(level + 1, levels, v1x, v1y, (v1x+v2x) / 2, (v1y+v2y)/2, (v1x+v3x)/2, (v1y+v3y)/2);
+    gasketHelper(level + 1, levels, v2x, v2y, (v1x+v2x) / 2, (v1y+v2y)/2, (v2x+v3x)/2, (v2y+v3y)/2);
+    gasketHelper(level + 1, levels, v3x, v3y, (v1x+v3x) / 2, (v1y+v3y)/2, (v1x+v3x)/2, (v1y+v3y)/2);
+  } 
 }
 
 void draw() { 
