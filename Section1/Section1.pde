@@ -1,3 +1,5 @@
+import java.util.Random;
+
 int MAX_VALUE = 100;
 int MIN_VALUE = -100;
 Visualizer v;
@@ -10,18 +12,21 @@ class Visualizer {
   float x, y;
   float [] values;
   float [] speeds;
+  Random rand = new Random();
+  int variable = rand.nextInt(40)+1;
   Visualizer(float x, float y) {
     this.x = x;
     this.y = y;
-    values = new float[10];
-    speeds = new float[10];
+    values = new float[variable];
+    speeds = new float[variable];
     for (int i = 0; i < values.length; i++) {
       values[i] = random(-99, 99);
       speeds[i] = random(2);
     }
   }
-
+  
   void display() {
+    float width = 400.0/values.length;
     //draw the bars equally spaced inside this box. 
     //You can assume 10, but it would be even better 
     //if you could modify it to be larger increments.
@@ -41,20 +46,21 @@ class Visualizer {
     //???WRITE THIS METHOD FIRST!!!
     for (int i = 0; i<values.length; i++) {
       if (values[i] < 0 && values[i] > -50) {
-        fill(255,153,0); //orange
-        rect(x+40*i, y+(100-values[i]*-1), 40, values[i]*-1);
+        fill(255,255,153); //yellow
+        rect(x+width*i, y+(100-values[i]*-1), width, values[i]*-1);
       }
       if (values[i] <= -50) {
-        fill(0,0,255); //red
-        rect(x+40*i, y+(100-values[i]*-1), 40, values[i]*-1);
+        fill(0,255,51); //green
+        rect(x+width*i, y+(100-values[i]*-1), width, values[i]*-1);
       }
-      if (values[i] > 0 && values[i] <= 50) { //yellow
+      if (values[i] > 0 && values[i] <= 50) { 
         fill(255,255,153);
-        rect(x+40*i, y+100, 40, values[i]);
+        fill(255,153,0); //orange
+        rect(x+width*i, y+100, width, values[i]);
       }
       if (values[i] > 50) {
-        fill(0,255,51); //green
-        rect(x+40*i, y+100, 40, values[i]);
+        fill(255,0,0); //red
+        rect(x+width*i, y+100, width, values[i]);
       }
     }
 
