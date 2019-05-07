@@ -39,15 +39,22 @@ class Visualizer {
     //Positive values are green and go above the line.
 
     //???WRITE THIS METHOD FIRST!!!
-    //THESE ARE WRONG: They just illustrate how they could look
     for (int i = 0; i<values.length; i++) {
-      if (values[i] < 0) {
-        fill(0,255,0);
+      if (values[i] < 0 && values[i] > -50) {
+        fill(255,153,0); //orange
+        rect(x+40*i, y+(100-values[i]*-1), 40, values[i]*-1);
+      }
+      if (values[i] <= -50) {
+        fill(0,0,255); //red
+        rect(x+40*i, y+(100-values[i]*-1), 40, values[i]*-1);
+      }
+      if (values[i] > 0 && values[i] <= 50) { //yellow
+        fill(255,255,153);
         rect(x+40*i, y+100, 40, values[i]);
       }
-      else {
-        fill(255, 0, 0);
-        rect(x+40*i, y+(100-values[i]*-1), 40, values[i]*-1);
+      if (values[i] > 50) {
+        fill(0,255,51); //green
+        rect(x+40*i, y+100, 40, values[i]);
       }
     }
 
